@@ -1,0 +1,127 @@
+<div class="offset-md-3 col-md-6">
+  <mat-card>
+    <form style="font-weight: 600" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div *ngIf="isUnique" class="error-message">
+            <span class="error-text">{{message}}</span>
+          </div>
+      <div  class="form-group">
+          <div class="form-group">
+            <div style="font-weight: 400 !important" class="text-center file-upload">
+              <label for="file" >
+                <div class="upload-wrapper">
+                  <img width="30%" src="../../assets/imgs/avatar.png">
+                  <div style=" margin: 5%" >Add Photos</div>
+                </div>
+                </label>
+              </div>
+              <input type="file" 
+              style="display: none;"
+              id="file"
+              formControlName="avatar"
+              class="form-control"
+              >
+    
+            </div>
+        <label for="username">UserName</label>
+        <input
+          type="text"
+          formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && form.username.errors }"
+          id="username"
+          class="form-control"
+          placeholder="User Name"
+        />
+        <div *ngIf="submitted && form.username.errors" class="invalid-feedback">
+          <div *ngIf="form.username.errors.required">User Name is required</div>
+          <div *ngIf="form.username.errors.minlength">
+            Minimum Length is 10 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input type="text"
+        formControlName="birthdate"
+        [ngClass]="{ 'is-invalid': submitted && form.birthdate.errors }"
+        placeholder="dd/mm/yy"
+        class="form-control"
+        bsDatepicker
+        [bsConfig]="{ isAnimated: true , dateInputFormat: 'DD/MM/YYYY'   }">
+        <div *ngIf="submitted && form.birthdate.errors" class="invalid-feedback">
+          <div *ngIf="form.birthdate.errors.required">Birth Date is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && form.email.errors }"
+          id="email"
+          class="form-control"
+          placeholder="Your Email"
+        />
+        <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+          <div *ngIf="form.email.errors.required">Email is required</div>
+          <div *ngIf="form.email.errors.email">Email form is Invalid</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && form.password.errors }"
+          id="password"
+          class="form-control"
+          placeholder="Your Password"
+        />
+        <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+          <div *ngIf="form.password.errors.required">
+            Password is required
+          </div>
+          <div *ngIf="form.password.errors.pattern" class="invalid-feedback">Number is Invalid</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="radio-label" for="gender">Gender</label><br>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                    <input
+                    type="radio"
+                    name='gender'
+                    value="Male"
+                    formControlName="gender"
+                    [ngClass]="{ 'is-invalid': submitted && form.gender.errors }"
+                    id="gender"
+
+                  />
+                  Male
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label" >
+                    <input
+                    type="radio"
+                    name='gender'
+                    value="Female"
+                    formControlName="gender"
+                    [ngClass]="{ 'is-invalid': submitted && form.gender.errors }"
+                    id="gender"
+                  />
+                  Female
+            </label>
+
+    </div>
+        <div *ngIf="submitted && form.gender.errors" class="invalid-feedback">
+          <div *ngIf="form.gender.errors.required">Gender is required</div>
+        </div>
+      </div>
+      <div class="text-center">
+            <button class="btn round btn-default mr-1" style="color:white;background-color: #09D95F;margin: 2.5%;"  >Register</button>
+            <button type="reset" class="btn round btn-default mr-1" (click)="onReset()" style="color:black;background-color:white;margin: 2.5%;border: 1px solid #09D95F"  >Reset</button>
+      </div>
+    </form>
+  </mat-card> 
+    </div>

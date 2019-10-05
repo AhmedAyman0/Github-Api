@@ -1,0 +1,36 @@
+<div class="card text-center m-3">
+    <h1>GitHub Users</h1>
+    <hr>
+        <div class="card-body">
+            <div class="input-group offset-md-3 col-md-6">
+            <input (keyup)="onKeyUp($event)" placeholder="Search" class="form-control" type="text" [(ngModel)]="searchval" >
+            <a class="btn btn-default" style="border: 1px solid;" [routerLink]="[ '/users' ]"  [queryParams]='{q: searchval , page : pager.currentPage}'><i class="fa fa-search" ></i></a>
+            <hr class="hr">
+        </div>
+        <br>
+            <mat-list>
+                    <mat-list-item  style="margin: 3% 0;" *ngFor="let user of users">
+                            <a style=" height: fit-content;   width: -webkit-fill-available;" class="btn shadow" mat-button [routerLink]="[ '/users', user.login ]">
+                                <img matListAvatar src="{{user.avatar_url}}" alt="{{user.gravatar_id}}">
+                                <h3 matLine> {{user.login}} </h3>
+                            </a>
+
+
+                    </mat-list-item>
+                  </mat-list>
+        </div>
+        <div *ngIf="isSearch" class="card-footer pb-0 pt-3">
+                <ul  class="pagination text-xs-center justify-content-center">
+                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
+                        <a class="page-link" [routerLink]="[ '/users' ]" class="page-link" [queryParams]='{q:searchval,page: page}'>{{page}}</a>
+                    </li>
+                </ul>
+            </div>
+        <div *ngIf="!isSearch" class="card-footer pb-0 pt-3">
+            <ul  class="pagination text-xs-center justify-content-center">
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
+                    <a class="page-link" [routerLink]="[ '/users' ]" class="page-link" [queryParams]='{page: page}'>{{page}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>

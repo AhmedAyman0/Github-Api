@@ -1,0 +1,33 @@
+  
+.round{
+    width: 61%;
+    border-radius: 25px;
+    font-size: larger;
+}
+
+.file-upload{
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    border: 2px dotted;
+    border-radius: 50%;
+}
+
+.upload-wrapper{
+    margin-top: 27%;
+}
+
+.error-message {
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    float: left;
+    padding: 20px 30px;
+  }
+
+  .error-text {
+    color: #cc0033;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    text-shadow: 1px 1px rgba(250,250,250,.3);
+  }

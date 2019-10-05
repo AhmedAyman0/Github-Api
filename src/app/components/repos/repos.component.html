@@ -1,0 +1,29 @@
+<p-orderList [value]="repos">
+    <ng-template let-repo pTemplate="item">
+        <div class="ui-helper-clearfix">
+
+            <div class="row">
+                <div class="col-md-4">
+                    RepoId : {{ repo.id }}
+                </div>
+                <div class="col-md-4">
+                    RepoName :{{ repo.name }}
+                </div>
+                <div class="col-md-4">
+                    Repo Full Name: {{ repo.full_name }}
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>
+<div style="width: 50%;
+    margin: 0 16%;" class="card-footer pb-0 pt-3 text-center">
+    <ul class="pagination text-xs-center justify-content-center">
+        <li *ngFor="let page of pager.pages" [ngClass]="{ active: pager.currentPage === page }"
+            class="page-item number-item">
+            <a class="page-link" [routerLink]="['/users',user.login,page]" class="page-link"
+                [queryParams]="{ page: page }">{{ page }}</a>
+        </li>
+    </ul>
+</div>
